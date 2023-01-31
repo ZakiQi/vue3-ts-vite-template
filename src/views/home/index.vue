@@ -9,11 +9,6 @@
 import { reactive } from 'vue';
 import myHeader from '@/components/home/my-header.vue'
 
-// interface Menu {
-//   name: string,
-//   id: Number | string
-// }
-
 const menuInfo: {
   name: string,
   id: number | string

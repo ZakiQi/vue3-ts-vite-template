@@ -72,7 +72,7 @@ import {
   Setting,
 } from '@element-plus/icons-vue'
 import { useLayoutStore } from '@/store/modules'
-const { GenerateRoutes } = useLayoutStore()
+const { GenerateRoutes, getMenubar } = useLayoutStore()
 
 const status: number = 1
 
@@ -86,8 +86,7 @@ const handleClose = (key:string, keyPath: string) => {
 }
 
 const route = GenerateRoutes()
-console.log(route, 'routerouterouteroute')
-
+console.log(route)
 </script>
 
 <style lang="scss">

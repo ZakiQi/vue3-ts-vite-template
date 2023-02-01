@@ -2,7 +2,7 @@ import axios from 'axios'
 import { ElNotification } from 'element-plus'
 
 const request = axios.create({
-  baseURL: '',
+  baseURL: '/api/',
   timeout: 60000 // 请求超时时间
 })
 
@@ -30,23 +30,23 @@ request.interceptors.request.use(config => {
 request.interceptors.response.use(response => {
   const { data } = response
 
-  if(data.Code !== 200) {
+  if(data.code) {
     // 请求失败
     let title = '请求失败'
-    if(data.Code === 401) {
+    if(data.code === 401) {
       // 如果获取不到token，退出登陆。。。
       title = '身份认证失败'
     }
 
     ElNotification({
       title,
-      message: data.Msg,
+      message: data.message,
       type: 'error'
-  })
-    return Promise.reject(new Error(data.Msg || 'Error'))
+    })
+    return Promise.reject(new Error(data.message || 'Error'))
   }
-
-  return response
+  
+  return data.data
 }, errorHandler)
 
 export default request

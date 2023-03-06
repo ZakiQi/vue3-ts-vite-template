@@ -139,6 +139,10 @@ let routerInfo: Array<IMenubarList> = [
   }
 ]
 
+Mock.setup({ //表示 400 毫秒 后才会返回响应内容；
+  timeout: 800
+})
+
 Mock.mock("/api/getRoute", 'get', () => {
   return {
     code: 0,

@@ -3,9 +3,12 @@ export interface IUserInfo {
   role: string[]
 }
 
+
+
 export interface Ilayout {
-  menubar: Array<IMenubarList>,
-  userInfo: IUserInfo
+  menubar: any,
+  userInfo: IUserInfo,
+  testUserInfo?: Array<IMenubarList>
 }
 
 export interface IMenubarList {

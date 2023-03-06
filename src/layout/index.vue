@@ -19,7 +19,7 @@
                 @open="handleOpen"
                 @close="handleClose"
               >
-                <menubarItem  v-for="item in testUserInfo" :meneList="item" :key="item.id"></menubarItem>
+                <menubarItem  v-for="item in menubar" :meneList="item" :key="item.id"></menubarItem>
               </el-menu>
             </div>
           </el-scrollbar>
@@ -39,8 +39,10 @@ import { reactive, ref, watch, nextTick } from 'vue'
 import { useLayoutStore } from '@/store/modules'
 import menubarItem from '@/components/layout/menubarItem.vue'
 import { IMenubarList } from '@/type/store/layout'
+import { storeToRefs } from 'pinia'
 
-const { GenerateRoutes, getMenubar, menubar, userInfo, testUserInfo } = useLayoutStore()
+const useLayout = useLayoutStore()
+const { menubar } = storeToRefs(useLayout)
 const status: number = 1
 
 // 菜单开关
@@ -53,13 +55,8 @@ const handleClose = (key:string, keyPath: string) => {
 }
 
 let route:IMenubarList[] = reactive([])
-GenerateRoutes().then(e => {
-  console.log(menubar, '22222', e)
-  nextTick(()=>{
-    route = e
-  })
-})
-
+// 获取菜单
+useLayout.GenerateRoutes()
 
 </script>
 

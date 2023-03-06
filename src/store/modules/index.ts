@@ -34,10 +34,10 @@ export const useLayoutStore = defineStore({
       this.menubar = data
     },
 
-    async GenerateRoutes():Promise<Array<IMenubarList>>{
+    async GenerateRoutes():Promise<void>{
       const routeInfo:any = await getRouterList() // mockjs
       this.setRoutes(routeInfo)
-      return  Promise.resolve(this.menubar)
+      return Promise.resolve()
     }
   }
 })
